@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova final</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>Digimon</h1>
+        <input v-model="query" @keyup.enter="searchDigimon" placeholder="Digite o nome do digimon">
+        <button @click="searchDigimon">Buscar</button>
+        <div v-if="error" class="error">{{ error }}</div>
+        <div v-if="digimons.length === 0">Não encontramos nenhum Digimon.</div>
+        <div v-for="digimon in digimons" :key="digimon.name" class="digimon-card">
+            <img :src="digimon.img" :alt="digimon.name">
+            <div>
+                <h2>{{ digimon.name }}</h2>
+                <p>Nivel: {{ digimon.level }}</p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
